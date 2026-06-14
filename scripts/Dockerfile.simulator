@@ -1,0 +1,6 @@
+FROM python:3.11-slim
+WORKDIR /app
+RUN pip install redis asyncio
+COPY simulate_demo.py .
+# Wait 15s for agents to boot before firing demo events
+CMD ["sh", "-c", "sleep 15 && python simulate_demo.py"]
